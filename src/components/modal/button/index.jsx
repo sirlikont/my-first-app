@@ -1,8 +1,8 @@
 import React from 'react';
 
-function ButtonComponent() {
+function ButtonComponent({ handleClick }) {
     return (
-        <button type="button" className="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#addEmployee">
+        <button type="button" className="btn btn-dark float-end" onClick={() => handleClick(true)}>
           + Employee
         </button>
     )

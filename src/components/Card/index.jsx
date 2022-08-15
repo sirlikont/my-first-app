@@ -17,7 +17,7 @@ function CardComponent() {
           </div>
           <div className="col-lg-3 p-3 ">
             <div className="d-flex">
-              <button className="btn btn-danger"><i class="fa fa-trash"></i></button>
+              <button className="btn btn-danger"><i className="fa fa-trash"></i></button>
             </div>
           </div>
         </div>

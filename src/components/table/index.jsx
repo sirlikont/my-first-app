@@ -2,7 +2,7 @@ import React from 'react';
 
 function TableComponent() {
     return (
-        <table class="table">
+        <table className="table">
         <thead>
           <tr>
             <th scope="col"></th>
@@ -20,7 +20,7 @@ function TableComponent() {
           </tr>
           <tr>
             <th scope="row">3.</th>
-            <td colspan="2">Internstellar</td>
+            <td colSpan="2">Internstellar</td>
           </tr>
         </tbody>
       </table>
