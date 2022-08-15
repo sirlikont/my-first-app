@@ -9,7 +9,7 @@ import ModalComponent from './components/modal/modal';
 import CardComponent from './components/Card';
 import TitleComponent from './components/title';
 import TribeTable from './components/tribes'
-import TribeRow from './components/tribes';
+import EmployeesCard from './components/employees'
 
 
 
@@ -44,8 +44,12 @@ function App() {
              </div> 
            </div>
 
-           <div className= 'row row-cols-lg-3 row-cols-md-2'>
+           <div className= 'row col-lg-4 col-md-6'>
              <div>
+             <EmployeesCard/>
+             </div>
+
+             {/* <div>
              <CardComponent/>
              </div>
 
@@ -59,11 +63,7 @@ function App() {
 
              <div>
              <CardComponent/>
-             </div>
-
-             <div>
-             <CardComponent/>
-             </div>
+             </div> */}
            </div>
 
      </div>
