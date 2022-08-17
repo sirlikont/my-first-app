@@ -1,0 +1,29 @@
+.name {
+    font-weight: bold;
+  }
+  
+  .occupation {
+    font-size: 14px;
+  }
+  
+  .tribe {
+    font-size: 12px;
+  }
+  
+  .flex-parent {
+    display: flex;
+  }
+  .flex-child {
+    align-items: center;
+    justify-content: center;
+  }
+  .flex-child:last-child {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  .img-thumbnail {
+    align-self: center;
+    max-width: 50px;
+    margin-right: 25%;
+  }
