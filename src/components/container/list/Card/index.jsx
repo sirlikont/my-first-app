@@ -1,7 +1,21 @@
 import React from 'react';
 import styles from './styles.css'
 
-function CardComponent() {
+function CardComponent({
+  employee,
+  handleDelete,
+}) {
+
+    function getTribeName(tribeId) {
+      const tribes = {
+        1: 'Rigas',
+        2: 'Billing',
+        3: 'Internstellar'
+      }
+
+      return tribes[tribeId];
+    }
+
     return (
         <div className="border bg-light flex-parent mt-4 p-4">
           <div className="col-lg-3 p-3">
@@ -10,9 +24,9 @@ function CardComponent() {
           </div>
           <div className="col-lg-7 flex-parent">
             <div className="flex-child p-3">
-              <div className="name">First name Last name</div>
-              <div className="occupation">Occupation</div>
-              <div className="tribe">Tribe name</div>
+              <div className="name">{employee.name}</div>
+              <div className="title">{employee.title}</div>
+              <div className="tribe">{getTribeName(employee.tribe)}</div>
             </div>
           </div>
           <div className="col-lg-3 p-3 ">
