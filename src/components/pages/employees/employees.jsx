@@ -1,7 +1,5 @@
 
 import React, { useEffect, useState }  from 'react';
-
-
 import ModalComponent from './modal';
 // import CardComponent from './list/Card';
 import TitleComponent from './title';
@@ -10,30 +8,54 @@ import { Container } from 'react-bootstrap';
 import EmployeesCard from './list';
 
 function EmployeesPage() {
-    // const [show, setShow] = useState(false);
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
 
-    const [employeesList, setEmployeesList] = useState([
-        {
-            id: 1,
-            name: "Zohaib",
-            title: "FullStack Dev",
-            tribe: 1,
-        },
-        {
-            id: 2,
-            name: "Mykhailo",
-            title: "Eng.Learn&Dev Lead",
-            tribe: 2,
-        },
-        {
-            id: 3,
-            name: "Sirli",
-            title: "Intern",
-            tribe: 3,
-        },
-    ]);
+    // const [employeesList, setEmployeesList] = useState([
+    //     {
+    //         id: 1,
+    //         name: "Zohaib",
+    //         title: "FullStack Dev",
+    //         tribe: 1,
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Mykhailo",
+    //         title: "Eng.Learn&Dev Lead",
+    //         tribe: 2,
+    //     },
+    //     {
+    //         id: 3,
+    //         name: "Sirli",
+    //         title: "Intern",
+    //         tribe: 3,
+    //     },
+    // ]);
+
+    const [employeesList, setEmployeesList] = useState([]);
+
+    useEffect(() => {
+    const fetchData = async () => {
+        try {
+            let response = await fetch ('http://localhost:3002/employees');
+
+            if(response.status === 200) {
+                let data = await response.json();
+                setEmployeesList(data)
+            } else {
+                console.log('Failed to fech users');
+                //set error here
+            }
+        } catch (error) {
+            console.log('Failed to fech users');
+            //set error here
+        }
+    }
+    fetchData();
+    }, []);
+
+    // useEffect(() =>{
+    //     console.log(employeesList);
+    // }, [employeesList])
+
 
     const formik = useFormik({
         initialValues: {
@@ -69,21 +91,6 @@ function EmployeesPage() {
                         <EmployeesCard employees={employeesList} setEmployees={setEmployeesList}/>
                      </div>
                  </div>
-                {/* <div>
-                <CardComponent/>
-                </div>
-
-                <div>
-                <CardComponent/>
-                </div>
-
-                <div>
-                <CardComponent/>
-                </div>
-
-                <div>
-                <CardComponent/>
-                </div> */}
             </div>
     
         </Container>
