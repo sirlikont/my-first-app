@@ -7,14 +7,24 @@ function CardComponent({
   handleDeletion,
 }) {
 
-    function getTribeName(tribeId) {
-      const tribes = {
-        1: 'Rigas',
-        2: 'Billing',
-        3: 'Internstellar'
-      }
+    function getTribeName(employee) {
+      const tribes = [
+        {
+          id: 1,
+          name: 'Internstellar',
+        },
+        {
+          id: 2,
+          name: 'Rigas',
+        },
+        {
+          id: 3,
+          name: 'Data Engineering'
+        }
+      ]
 
-      return tribes[tribeId];
+      const employeeTribe = tribes.find((tribe) => tribe.id === employee.tribe_id)
+      return employeeTribe.name
     }
 
     return (
@@ -27,7 +37,7 @@ function CardComponent({
             <div className="flex-child p-3">
               <div className="name">{employee.name}</div>
               <div className="title">{employee.title}</div>
-              <div className="tribe">{getTribeName(employee.tribe)}</div>
+              <div className="tribe">{getTribeName(employee)}</div>
             </div>
           </div>
           <div className="col-lg-3 p-3 ">

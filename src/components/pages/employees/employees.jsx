@@ -56,22 +56,52 @@ function EmployeesPage() {
     //     console.log(employeesList);
     // }, [employeesList])
 
+    const addEmployee = async (values) => {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        debugger;
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(values),
+            redrict: 'follow'
+        };
+        try {
+            console.log("these are" + values);
+            const response = await fetch('http://localhost:3002/employees', requestOptions);
+            const employee = await response.json();
+            console.log(employee);
+
+            return employee;
+        } catch(error) {
+            console.log('Failed to post a employee');
+        }
+    }
 
     const formik = useFormik({
         initialValues: {
           name: '',
           title: '',
-          tribe: '',
+          tribe_id: '',
         },
-        onSubmit: (values, {resetForm}) => {
-          setEmployeesList((previousEmployees) => [...previousEmployees, {
-            id: Math.floor(Math.random() * 101),
-            name: values?.name,
-            tribe: values?.tribe,
-            title: values?.title,
-          }]);
-          resetForm();
-        },
+
+        onSubmit: async (values, {resetForm}) => {
+            const response = await addEmployee(values);
+            setEmployeesList((previousEmployees) => [...previousEmployees, { response }])
+            resetForm(); 
+        }
+   
+
+        // onSubmit: (values, {resetForm}) => {
+        //   setEmployeesList((previousEmployees) => [...previousEmployees, {
+        //     id: Math.floor(Math.random() * 101),
+        //     name: values?.name,
+        //     tribe: values?.tribe,
+        //     title: values?.title,
+        //   }]);
+        //   resetForm();
+        // },
       });
 
       return (

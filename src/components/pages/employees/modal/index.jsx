@@ -33,10 +33,10 @@ export default function ModalComponent({ formik }) {
 
           <div className="mb-3">
             <label className="form-label">Tribe:</label>
-            <select className="form-select" id="tribe" name="tribe" value={formik.values.tribe} onChange={ (e) => formik.setFieldValue('tribe', e.target.value)} >
-              <option value="1">Rigas</option>
-              <option value="2">Billing</option>
-              <option value="3">Internstellar</option>
+            <select className="form-select" id="tribe_id" name="tribe_id" value={formik.values.tribe_id} onChange={ (e) => formik.setFieldValue('tribe_id', e.target.value)} >
+              <option value="1">Internstellar</option>
+              <option value="2">Rigas</option>
+              <option value="3">Data Engineering</option>
             </select>
           </div>
       </Modal.Body>
