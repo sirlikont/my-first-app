@@ -27,6 +27,7 @@ function CardComponent({
       return employeeTribe.name
     }
 
+
     return (
         <div className="border bg-light flex-parent mt-4 p-4">
           <div className="col-lg-3 p-3">

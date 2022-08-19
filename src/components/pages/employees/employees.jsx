@@ -60,7 +60,6 @@ function EmployeesPage() {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
-        debugger;
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -88,7 +87,7 @@ function EmployeesPage() {
 
         onSubmit: async (values, {resetForm}) => {
             const response = await addEmployee(values);
-            setEmployeesList((previousEmployees) => [...previousEmployees, { response }])
+            setEmployeesList((previousEmployees) => [...previousEmployees, response])
             resetForm(); 
         }
    
