@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from './styles.css'
-
+// import styles from './styles.css'
 
 function CardComponent({
   employee,

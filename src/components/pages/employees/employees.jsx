@@ -6,6 +6,7 @@ import TitleComponent from './title';
 import { useFormik } from 'formik';
 import { Container } from 'react-bootstrap';
 import EmployeesCard from './list';
+import ClipLoader from "react-spinners/ClipLoader";
 
 function EmployeesPage() {
 
@@ -31,11 +32,15 @@ function EmployeesPage() {
     // ]);
 
     const [employeesList, setEmployeesList] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const  [failing, setFailing] = useState(false);
 
     useEffect(() => {
     const fetchData = async () => {
         try {
+            setLoading(true)
             let response = await fetch ('http://localhost:3002/employees');
+            setLoading(false)
 
             if(response.status === 200) {
                 let data = await response.json();
@@ -45,6 +50,8 @@ function EmployeesPage() {
                 //set error here
             }
         } catch (error) {
+            setLoading(false);
+            setFailing(true);
             console.log('Failed to fech users');
             //set error here
         }
@@ -113,15 +120,26 @@ function EmployeesPage() {
             </div>
 
             <ModalComponent formik={formik}/>
+
+            <div className='contaner'>
+                { failing && <p>Something went wrong</p>}
+                { loading ? (
+                    <div className="loader-container">
+                        <ClipLoader color={'#26AD14'} loading={loading} size={100} />
+                    </div>
+                    ) : (
            
-            <div className='row emloyeecards'>
-                <div className="col-lg-4 col-md-6">
-                    <div>
-                        <EmployeesCard employees={employeesList} setEmployees={setEmployeesList}/>
-                     </div>
-                 </div>
-            </div>
+                    <div className='row emloyeecards'>
+                        <div className="col-lg-4 col-md-6">
+                            <div>
+                                <EmployeesCard employees={employeesList} setEmployees={setEmployeesList}/>
+                            </div>
+                        </div>
+                    </div>
     
+                    )}
+                </div>
+
         </Container>
     )
 }
