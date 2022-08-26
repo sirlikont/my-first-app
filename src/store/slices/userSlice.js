@@ -27,7 +27,7 @@ export const usersSlice = createSlice({
       state.error = true;
       state.list = [];
     },
-    deleteUsers: (state) => {
+    deleteUsers: (state, id) => {
         state.loading = true;
         state.success = false;
         state.error = false;
